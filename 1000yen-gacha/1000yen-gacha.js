@@ -17,9 +17,9 @@ $.getJSON('sugakiya.json', (data) => {
             break
         }
         var idx = Math.floor(Math.random() * maxIdx)
-        $('table>tbody').append('<tr><th scope="row">' + i + '</th><td>' + arr[idx][0] + '</td><td>\\' + arr[idx][1] + '</td></tr>')
+        $('table>tbody').append('<tr><th scope="row">' + i + '</th><td>' + arr[idx][0] + '</td><td>¥' + arr[idx][1] + '</td></tr>')
         total += arr[idx][1]
         i++
     }
-    $('table>tbody').append('<tr><th scope="row">合計</th><td></td><td>\\' + total + '</td></tr>')
+    $('table>tbody').append('<tr><th scope="row">合計</th><td></td><td>¥' + total + '</td></tr>')
 })
