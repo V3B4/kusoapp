@@ -5,6 +5,7 @@ $.getJSON('sugakiya.json', (data) => {
     })
     let maxIdx = 0
     let total = 0
+    let i = 1
     while (maxIdx >= 0) {
         for (maxIdx = 0; maxIdx < arr.length; maxIdx++) {
             if (arr[maxIdx][1] > 1000 - total) {
@@ -16,8 +17,9 @@ $.getJSON('sugakiya.json', (data) => {
             break
         }
         var idx = Math.floor(Math.random() * maxIdx)
-        document.write(arr[idx] + '<br>')
+        $('table>tbody').append('<tr><th scope="row">' + i + '</th><td>' + arr[idx][0] + '</td><td>\\' + arr[idx][1] + '</td></tr>')
         total += arr[idx][1]
+        i++
     }
-    document.write(total)
+    $('table>tbody').append('<tr><th scope="row">合計</th><td></td><td>\\' + total + '</td></tr>')
 })
