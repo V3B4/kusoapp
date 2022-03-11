@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WEBカメラの映像を表示</title>
+  <style>
+      body {
+          background-color: black;
+      }
+      h1 {
+          font-size: 25px;
+          color: white;
+          text-align: center;
+      }
+      #video {
+          width: calc(100vw - 20px);
+          height: calc(100vh - 100px);
+      }
+  </style>
+</head>
+<body>
+    <div>
+        <h1>反転カメラ</h1>
+        <div>
+            <video id="video" style="-webkit-filter: invert(100%);"></video>
+        </div>
+    </div>  
+    <script>
+        const video = document.getElementById("video")
+        navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: false,
+        }).then(stream => {
+            video.srcObject = stream;
+            video.play()
+        }).catch(e => {
+          console.log(e)
+        })
+    </script>  
+</body>
+</html>
