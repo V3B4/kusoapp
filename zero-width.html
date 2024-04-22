@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ゼロ幅スペース除去ツール</title>
+<style>
+  .container {
+    width: 100vw;
+    max-width: 900px;
+    padding: 0px 10px;
+  }
+  #inputText, button, #output {
+    width: calc(100% - 40px);
+    box-sizing: border-box; /* パディングとボーダーを含めた幅で計算 */
+    margin-bottom: 10px; /* 要素間の間隔 */
+  }
+  #inputText, #output {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 8em;
+  }
+  button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  #output {
+    min-height: 20px; /* 出力欄の高さを1行分に設定 */
+    line-height: 20px;
+    overflow: hidden; /* 内容がはみ出した場合に非表示にする */
+  }
+  h1 {
+    font-size: 25px;
+    border-left: 10px solid #007bff;
+    padding-left: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>ゼロ幅スペース除去ツール</h1>
+  <textarea  type="text" id="inputText" placeholder="テキストを入力"></textarea>
+  <button onclick="removeZeroWidthSpace()">ゼロ幅スペースを除去</button>
+  <textarea id="output"></textarea>
+</div>
+
+<script>
+function removeZeroWidthSpace() {
+  var input = document.getElementById('inputText').value;
+  var output = input.replace(/\u200B/g, '');
+  document.getElementById('output').textContent = output;
+}
+</script>
+</body>
+</html>
