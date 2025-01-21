@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluesky&X Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+            margin: 0;
+        }
+        .search-container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+            text-align: center; /* 中央揃え */
+            margin-bottom: 30vh;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin: 10px 0; /* 上下のマージンを追加 */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="button"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function search() {
+            const keyword = document.getElementById('keyword').value;
+            const url1 = 'https://bsky.app/search?q=' + encodeURIComponent(keyword);
+            const url2 = 'https://x.com/search?q=' + encodeURIComponent(keyword);
+
+            window.open(url1, '_blank'); // 新しいタブで開く
+            window.open(url2, '_blank'); // 新しいタブで開く
+        }        
+        
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                search();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="search-container">
+        <h1>Bluesky&X Search</h1> <!-- タイトルを追加 -->
+        <input type="text" id="keyword" placeholder="Enter keywords" required onkeypress="handleKeyPress(event)">
+        <input type="button" value="Search" onclick="search()">
+    </div>
+</body>
+</html>
